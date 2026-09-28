@@ -4,7 +4,7 @@ import { openwa } from '@/lib/openwa';
 
 // GET /api/sessions → only *my* sessions
 export async function GET() {
-  const supabase = supabaseServer();
+  const supabase = await supabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
 
@@ -19,7 +19,7 @@ export async function GET() {
 
 // POST /api/sessions → create a new OpenWA session, store mapping to current user
 export async function POST(req: Request) {
-  const supabase = supabaseServer();
+  const supabase = await supabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
 

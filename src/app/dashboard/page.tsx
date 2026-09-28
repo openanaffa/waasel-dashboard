@@ -2,7 +2,7 @@ import { supabaseServer } from '@/lib/supabase/server';
 import Link from 'next/link';
 
 export default async function Overview() {
-  const supabase = supabaseServer();
+  const supabase = await supabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
 
   const [{ data: sessions }, { count: msgCount }] = await Promise.all([

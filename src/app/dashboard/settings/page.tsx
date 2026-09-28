@@ -3,7 +3,7 @@ import { supabaseServer } from '@/lib/supabase/server';
 import SettingsForms from './SettingsForms';
 
 export default async function Settings() {
-  const supabase = supabaseServer();
+  const supabase = await supabaseServer();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/login');
 
