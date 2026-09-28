@@ -50,6 +50,7 @@ for each row execute procedure public.handle_new_user();
 
 -- Row Level Security: users can only see their own rows
 alter table profiles enable row level security;
+alter table profiles add column daily_message_cap int default 200;
 alter table whatsapp_sessions enable row level security;
 alter table messages enable row level security;
 
